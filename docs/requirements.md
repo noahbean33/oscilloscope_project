@@ -1,0 +1,9 @@
+- two channels
+- display shows one channel
+- 0v to 3.3v range
+- accurate to 500 khz
+- data streaming/logging to pc
+- small form factor
+- buttons for channel activation
+- button for start/stop recording
+- led indicator for power, channel activity, recording, etc

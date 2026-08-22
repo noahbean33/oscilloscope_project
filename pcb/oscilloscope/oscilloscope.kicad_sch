@@ -1,0 +1,129 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "480b0571-5131-4797-b0e6-3abb4b605596")
+	(paper "A4")
+	(title_block
+		(title "Oscilloscope")
+		(date "2026-08-22")
+		(rev "A")
+	)
+	(lib_symbols)
+	(text "- Insufficient Coupling on VDDA\n- No Decoupling on LEDA, LCDVDD\n- No filtering on ADC CH1,2\n- Not enough current for LEDs\n- No hardware button debounce\n- Internal OSC not good enough"
+		(exclude_from_sim no)
+		(at 157.48 177.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "feb32025-0c6d-45e8-b8d5-132bcc59a77c")
+	)
+	(text_box "STM32 Microcontroller"
+		(exclude_from_sim no)
+		(at 17.78 83.82 0)
+		(size 118.11 110.49)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "166cba45-1cf7-4e85-82a9-a7eef23dad16")
+	)
+	(text_box "Issues"
+		(exclude_from_sim no)
+		(at 139.7 166.37 0)
+		(size 34.29 29.21)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "59eded04-b579-488b-a0e3-4fe1d1cfe330")
+	)
+	(text_box "STM32 SWD"
+		(exclude_from_sim no)
+		(at 185.42 17.78 0)
+		(size 93.98 58.42)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "90253452-ef30-4235-9dd4-4ededa2b3e0b")
+	)
+	(text_box "USB and Power Delivery"
+		(exclude_from_sim no)
+		(at 17.78 17.78 0)
+		(size 160.02 58.42)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "b1e43dcf-993e-4e09-9132-f31687c744a6")
+	)
+	(text_box "User Interface"
+		(exclude_from_sim no)
+		(at 142.24 85.09 0)
+		(size 138.43 76.2)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "ea3a5007-3963-46c0-9e81-11d00fe285f1")
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,31 @@
+Part Number,Description,Manufacturer,Package,Designator,Quantity,Price (AUD),Real Price (AUD),URL
+STM32L432KCU6,STM32 Microcontroller,STMicroelectronics,UFQFPN,U1,1,$7.57,$7.57,https://www.digikey.com.au/en/products/detail/stmicroelectronics/STM32L432KCU6/6132749
+FTSH-107-01-L-DV-K-P,JTAG programming header,Samtec,SMD,J2,1,$4.98,$4.98,https://www.digikey.com.au/en/products/detail/samtec-inc/FTSH-107-01-L-DV-K-P/7434355
+GSB1C41110SSHR,USB-C Header,Amphenol ICC,SMD,J1,1,$0.98,$0.98,https://www.digikey.com.au/en/products/detail/amphenol-cs-commercial-products/GSB1C41110SSHR/21623839
+AP7361C-33Y5-13,Linear Voltage Regulator 3.3V,Diodes Incorporated,SMD,U2,1,$0.79,$0.79,https://www.digikey.com.au/en/products/detail/diodes-incorporated/AP7361C-33Y5-13/5638323
+ERM19296-1,"LCD Display (ST75256, 4-Wire SPI)",EastRising,Breakout,LCD1,1,$12.22,$12.22,https://www.buydisplay.com/2-8-inch-white-192x96-graphic-lcd-display-module-st75256-for-arduino
+Y41A00517FPLFS,UI Push Button (Red),C&K,Through-Hole,BTN3,1,$2.56,$2.56,https://www.digikey.com.au/en/products/detail/c-k/Y41A00517FPLFS/1466332
+Y41A00511FPLFS,UI Push Button (Black),C&K,Through-Hole,"BTN1,BTN2",2,$2.56,$5.12,https://www.digikey.com.au/en/products/detail/c-k/Y41A00511FPLFS/1466335
+LTL-4252N,"LED Yellow (2.1V, Power)",Lite-On,Through-Hole,D1,1,$0.30,$0.30,https://www.digikey.com.au/en/products/detail/liteon/LTL-4252N/214456
+LTL-4238,"LED Green (2.1V, Channel)",Lite-On,Through-Hole,"D2,D3",2,$0.30,$0.60,https://www.digikey.com.au/en/products/detail/liteon/LTL-4238/217578
+C503B-RCN-CW0Z0AA1,"LED Red (2.1V, Recording)",Cree LED,Through-Hole,D4,1,$0.28,$0.28,https://www.digikey.com.au/en/products/detail/cree-led/C503B-RCN-CW0Z0AA1/1922930
+CF14JT5K10,5.1kOhm Resistor,Stackpole,Through-Hole,"R1,R2",2,$0.16,$0.32,https://www.digikey.com.au/en/products/detail/stackpole-electronics-inc/CF14JT5K10/1741447
+CF14JT10K0,10kOhm Resistor,Stackpole,Through-Hole,"R3,R8,R9,R10,R11,R13",6,$0.16,$0.96,https://www.digikey.com.au/en/products/detail/stackpole-electronics-inc/CF14JT10K0/1741265
+KGM21NR71H104JT,0.1uF Ceramic Cap (5%),Kyocera,SMD (0805),"C5,C6,C7",3,$0.17,$0.51,https://www.digikey.com.au/en/products/detail/kyocera-avx/KGM21NR71H104JT/929984
+CONBNC001,BNC Connector,TE Connectivity Linx,Through-Hole,"J3,J4",2,$2.78,$5.56,https://www.digikey.com.au/en/products/detail/te-connectivity-linx/CONBNC001/16013844
+C0805C475J8RACAUTO,4.7uF Ceramic Cap (5%),KEMET,SMD (0805),"C1,C2,C8",3,$0.89,$2.67,https://www.digikey.com.au/en/products/detail/kemet/C0805C475J8RACAUTO/7427538
+CF14JT1K00,1kOhm Resistor (5%),Stackpole,Through-Hole,"R14,R15",2,$0.16,$0.32,https://www.digikey.com.au/en/products/detail/stackpole-electronics-inc/CF14JT1K00/1741314
+MBB02070C1000FCT00,100Ohm Resistor,Vishay,Through-Hole,R12,1,$0.16,$0.16,https://www.digikey.com.au/en/products/detail/vishay-beyschlag-draloric-bc-components/MBB02070C1000FCT00/5062929
+CF18JT200R,200Ohm Resistor (5%),Stackpole,Through-Hole,"R4,R5,R6,R7",4,$0.16,$0.64,https://www.digikey.com.au/en/products/detail/stackpole-electronics-inc/CF18JT200R/1741632
+5000,Test Point Header (Red) OPTIONAL,Keystone,Through-Hole,"TP1,TP2",2,$0.62,$1.24,https://www.digikey.com.au/en/products/detail/keystone-electronics/5000/255326
+5001,Test Point Header (Black) OPTIONAL,Keystone,Through-Hole,TP5,1,$0.41,$0.41,https://www.digikey.com.au/en/products/detail/keystone-electronics/5001/255327
+5009,Test Point Header (Yellow) OPTIONAL,Keystone,Through-Hole,"TP3,TP4",2,$0.62,$1.24,https://www.digikey.com.au/en/products/detail/keystone-electronics/5009/362671
+TS-107-T-AA,7-Position Pin Header,Samtec,Through-Hole,N/A,2,$2.02,$4.04,https://www.digikey.com.au/en/products/detail/samtec-inc/TS-107-T-AA/10218878
+,,,,,,,,
+STLINK-V3MINIESTM32,STM32 Programmer,STMicroelectronics,N/A,N/A,1,$18.56,$18.56,https://www.digikey.com.au/en/products/detail/stmicroelectronics/stlink-v3minie/16284301
+,,,,,,,,
+Totals (AUD) exc. Shipping,,,,,43,,$72.03,
+Totals w/out Programmer (AUD) exc. Shipping,,,,,42,,$53.47,
+,,,,,,,,
+Totals (USD) exc. Shipping,,,,,,,$47.56,
+Totals w/out Programmer (USD) exc. Shipping,,,,,,,$35.30,
