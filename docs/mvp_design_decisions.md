@@ -19,16 +19,16 @@ This file locks the **Sillyscope Rev 0.2 MVP** decisions for schematic capture. 
 | Item | Rev 0.2 MVP decision | Status / verification gate |
 |---|---|---|
 | ADC pins and sequence | CH1 = PA0/ADC1_IN5, rank 1; CH2 = PA1/ADC1_IN6, rank 2 | Locked for capture; firmware register/readback confirmation required |
-| ADC clock/rate | ADC asynchronous clock target 80 MHz; timer-triggered 3.2 Msps aggregate; 12.5-cycle sample + 12.5-cycle conversion | Configuration target; firmware and bench confirmation required |
+| ADC clock/rate | ADC asynchronous clock target 80 MHz; timer-triggered 3.2 Msps aggregate; 12.5-cycle sample + 12.5-cycle conversion | **Current 330 Ω/1 nF drive fails modeled acquisition settling (~9.5–9.9 LSB).** Change R12/R18 to 47 Ω is recommended before layout freeze; then re-simulate and bench-confirm. |
 | Channel timing | CH1 then CH2, nominal 312.5 ns sample-time offset and 1.6 Msps/channel | Configuration targets, not measured facts |
 | Input range | 0–12 V DC normal rated measurement | Locked |
 | Overload | 15 V non-destructive survival target | Unverified prototype gate; not a user rating or certification |
 | Input impedance | 1.10 MΩ low-frequency nominal | Locked |
 | Analog architecture | Divider → CHx_CLAMP → 10 kΩ → TLV9062 non-inverting input → follower → 330 Ω/1 nF ADC RC | Locked |
 | Divider | 3 × 300 kΩ high arm + 200 kΩ low arm; all 0.1%, ≤25 ppm/°C | Locked |
-| Compensation | 12 pF C0G across each 300 kΩ; 8.2 pF C0G across 200 kΩ plus DNI 2.2 pF/4.7 pF trim pads | Topology locked; compensation trim is a prototype gate |
+| Compensation | 12 pF C0G across each 300 kΩ; 8.2 pF C0G across 200 kΩ plus 2.2 pF/4.7 pF trim pads | 8.2 pF-only baseline fails modeled ±1 dB-to-100 kHz flatness. Expected robust population is both trims (15.1 pF total); 12.9 pF remains the measured-parasitic alternate. |
 | Clamp | One BAV199LT1G per channel, both internal diodes used | Locked; exact mapping below |
-| Buffer/filter | TLV9062IDR; 330 Ω series and 1.0 nF C0G at ADC pin | Locked; settling/stability/bandwidth are prototype gates |
+| Buffer/filter | TLV9062IDR; 1.0 nF C0G at ADC pin; **47 Ω series recommended in place of captured 330 Ω** | Simulation-proven change required to retain 12.5-cycle target; not yet implemented |
 | Clock accuracy | HSI timebase with USB-SOF/factory correction | Locked approach; HSI accuracy over temperature is a prototype gate |
 | VCP | Explicit crossed target/probe UART nets | Locked; continuity/loopback confirmation required |
 | LCD procurement | Exact **ERM19296-1, “4-Wire SPI Pin Header Connection”** option | Locked; connector/interface captured below |
@@ -88,6 +88,7 @@ Neither RSS figure replaces the guaranteed worst-case limit.
 - Per-rank timing target: **12.5 ADC clock cycles sampling + 12.5 cycles conversion = 25 cycles = 312.5 ns** at 80 MHz.
 - Timer-triggered sequence target: **3.2 Msps aggregate**, yielding **1.6 Msps/channel** for the two alternating ranks.
 - The **312.5 ns channel skew** and **1.6 Msps/channel** values are configuration targets requiring firmware register verification and bench timing confirmation; they are not measured performance claims.
+- Rev 0.2 simulation of the captured 330 Ω/1 nF ADC network produced approximately **9.5–9.9 LSB external acquisition error** for alternating 0.5 V/12 V channel-equivalent levels. A candidate sweep found **47 Ω/1 nF** gives **0.558 LSB worst-case modeled error** over RADC bounds 0–680 Ω. Treat R12/R18=47 Ω as the required pre-layout change unless a subsequent authoritative macromodel contradicts it.
 - DMA circular acquisition, software trigger, and 10/50/90% pretrigger remain locked.
 - HSI timebase accuracy, including temperature behavior after USB-SOF/factory correction, is a prototype verification gate.
 

@@ -27,7 +27,14 @@
 4. Initialize the ERM19296-1 logic before enabling the backlight.
 5. Sweep PA8 PWM and measure backlight current. Retain 27 Ω only if the maximum-brightness current is 60–75 mA under the defined VBUS condition.
 6. Apply precision low-voltage DC sources to CH1 and CH2. Compare TP_CHx_IN, TP_CHx_DIV and TP_CHx_ADC; verify symmetry and ADC mapping.
-7. Perform the square-wave compensation procedure using the fitted 8.2 pF and DNI 2.2/4.7 pF trim locations.
+7. Verify the fitted ADC isolation resistors are the post-simulation value (**47 Ω recommended for R12/R18**) and C18/C25 remain 1.0 nF.
+8. Alternate channel-equivalent inputs near 0.5 V and 12 V at the locked 80 MHz, 12.5-cycle sequence. Measure rank-end settling/crosstalk; acceptance is ≤1 LSB external acquisition error before ADC intrinsic TUE is added.
+9. Perform square-wave and swept-sine compensation tests. Start with 15.1 pF total low-arm capacitance (8.2+2.2+4.7 pF), compare 12.9 pF, and reject 8.2 pF-only unless measured DC–100 kHz response remains within ±1 dB.
+10. Measure the zero-input ADC floor and input-equivalent dead zone; characterize/calibrate the TLV9062 near-ground output limit rather than assuming a true zero code.
+11. Repeat 0→12 V, 12→0 V, 1 kHz square, and 100 kHz sine tests on both channels and record overshoot, settling, gain, phase, and channel symmetry.
+12. Perform current-limited 15 V positive overload/recovery tests. Negative-input and +20 V abuse tests are engineering stress tests only; keep them current-limited and do not convert them into user ratings.
+13. Exercise 20→70 mA and 20→100 mA 3.3 V load steps and 0→75 mA backlight steps while recording VBUS_PROT/3V3 dip, overshoot, and AP7361C temperature.
+14. Verify the actual pre-enumeration state remains below 100 mA with the backlight off; the 100 mA validation rail case plus regulator/TVS current is slightly above a strict 100 mA limit.
 
 ## Prototype gates
 
