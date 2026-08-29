@@ -15,7 +15,7 @@ Simulation date: 2026-08-24.
 | ±1 dB DC–100 kHz | **Fail with fitted 8.2 pF only; pass with trim** | Baseline peaks about +2 to +4 dB depending BAV199 capacitance. Robust modeled choice is 15.1 pF total low-arm capacitance (8.2+2.2+4.7 pF); 12.9 pF is flattest if diode/stray capacitance is near 4 pF. |
 | Expected ~200 kHz usable bandwidth | **Conditional pass** | 15.1 pF passes 100 kHz robustly but can be slightly beyond −1 dB near 200 kHz with high diode capacitance/source resistance. 12.9 pF gives ~298 kHz ±1 dB span in the 4 pF diode-cap case. Bench trim remains required. |
 | ADC settling at 80 MHz, 12.5 cycles, original 330 Ω/1 nF | **Failed; corrected** | The original network produced about 9.5–9.9 LSB external acquisition error. R12/R18 are now 47 Ω with C18/C25 retained at 1 nF. |
-| Implemented 47 Ω/1 nF network | **Pass in bounded model** | Worst modeled external acquisition error is 0.450 mV = 0.558 LSB for RADC bounds 0–680 Ω. Schematic and production MPN were updated before layout. |
+| Implemented 47 Ω/1 nF network | **Pass in bounded model** | Worst modeled external acquisition error is 0.450 mV = 0.558 LSB for RADC bounds 0–680 Ω. R12/R18 are implemented as Yageo RC0603FR-0747RL. This remains modeled, not measured. |
 | USB 125/145/175 mA budget cases | **Pass** | Including 80 µA LDO IQ and 20 µA TVS leakage gives approximately 125.10/145.10/175.10 mA. |
 | AP7361C headroom/thermal | **Pass, layout-dependent** | Worst protected VBUS 4.3648 V; no dropout rows. Maximum LDO dissipation 0.1919 W, corresponding to ~28.8 °C rise with datasheet 150 °C/W test-board θJA. |
 | Backlight current | **Unresolved by design evidence** | 60/75 mA were imposed load cases. Required LCD LED Vf is calculated, not verified. Retain the 27 Ω value-selection prototype gate. |
@@ -30,7 +30,7 @@ The following source-identified values were extracted from the manufacturer data
 - **AP7361C, Diodes Inc. DS37274:** IQ 60 µA typical/80 µA maximum; dropout ≤140 mV at 300 mA for 2.6–3.3 V versions; output capacitor ≥2.2 µF with 10–300 mΩ ESR; 150 µs typical startup test; SOT-89-5 θJA=150 °C/W on the specified 1×1 inch minimum-pad FR-4 board.
 - **MF-PSMF035X-2, Bourns:** 0.35 A hold, 0.75 A trip, 0.25 Ω Rmin, 1.2 Ω R1max, 0.14 A hold at 85 °C.
 - **SMAJ5.0A-TR, ST:** 5.0 V stand-off, 20 µA maximum leakage at the stated test point, 6.4 V minimum breakdown, 13.4 V maximum clamp at the specified pulse current. TVS capacitance was not numerically resolved from the graph.
-- **NCE3401:** 75 mΩ maximum RDS(on) at VGS=−4.5 V; θJA=104 °C/W under its stated board condition.
+- **NCE3401 (fitted Q1):** 75 mΩ maximum RDS(on) at VGS=−4.5 V; θJA=104 °C/W under its stated board condition.
 - **2N7002KT1G:** 2.5 Ω maximum RDS(on) at 4.5 V/200 mA; steady-state θJA depends strongly on copper area (300–417 °C/W stated conditions). Its steady load here is only the ~50 µA pull-up current.
 - Selected passives are the exact MPNs in [Passive Sourcing Report](../files/passive-sourcing-report): Vishay TNPW 300 kΩ/200 kΩ precision parts, KEMET C0G compensation/filter capacitors, TDK 4.7 µF X7R regulator capacitors, and Yageo resistors.
 
@@ -157,16 +157,22 @@ An ideal source/R/C bound using C1=4.23–4.7 µF gives 10–90% VBUS_PROT rise 
 
 [Startup/hot-plug RC bounds CSV](https://cdn2.flux.ai/flux-comment-files/files/commentFileId-6d89e029df5736dd46f3270ef9f8027f01d8ae552f2b194ab310b0825ab3b982.csv?GoogleAccessId=autopilot-sa-d60c62b%40graviton-mvp.iam.gserviceaccount.com&Expires=4941214024&Signature=i0wGYiAGMPhLl7bDMxkpef0Uqbh9LI0agDyCxGwBUS8WlTA%2FAa%2FBli6X6h712t2ktuID2UrvSeh1AhtdWCPyxp%2BnHcjl2FZSKZfT8XNblk2lFdP3bTqu88Gy6ZZ7xt3UHfGqHrKQgjIuNTvO%2BTuL6udBXXLZAOQFsZtOHCpXKlRvCjO0QskmAiMRYTDwUR2cxVzFiJeI9rID%2BZXEe%2BSKuzrSL2MrxgbVrnLz5uVOpNgXm%2BTWy%2BkEyo99KOErVUdeI2D8dDo7iKscdxVTkMBK73vliGBVU5Ue%2B7fRrcscujfXDWdsXgoDdBs8uHPTNsJ%2B1rC5ypu6z80L3bnTcDByXw%3D%3D)
 
-## Required actions before layout freeze
+## Post-layout validation status
 
-1. **Completed:** R12 and R18 are 47 Ω, retaining C18/C25=1 nF. Rerun final ADC acquisition and analog stability simulations if an actual TLV9062 macromodel becomes available, and validate on the prototype.
+1. **Implemented:** R12 and R18 are 47 Ω Yageo RC0603FR-0747RL, retaining C18/C25=1 nF. Rerun analysis if an actual TLV9062 macromodel becomes available, and validate on the prototype.
 2. Keep both compensation trim footprints. Prototype default is expected to be 15.1 pF total low-arm capacitance, with 12.9 pF as the likely alternate after measured parasitic capacitance and square-wave response.
 3. Preserve the existing backlight current-tuning and power/thermal prototype gates.
 4. Bench-check the near-zero output floor, 15 V overload/recovery, negative-input behavior under current limitation, ADC crosstalk, and the final firmware sampling sequence.
 
+## Layout and claim boundary update — 2026-08-28
+
+The PCB is routed on a 100 × 100 mm, four-copper-layer, nominal 1.30 mm custom stackup with all components top-side. Current checks show zero airwires and zero DRC errors. USB_DP uses a bottom-layer bypass with explicit top/bottom transition vias; the configured 45 Ω single-ended / 90 Ω differential USB target is a fabrication target only. Two protected dangling-trace warnings (`Trace a4ae`, `Trace b74f`) require Gerber review and cleanup or explicit waiver.
+
+No simulation result in this file closes the unmeasured gates for bandwidth, divider compensation, 15 V survival, backlight operating point, USB ESD/hot-plug, ADC timing, thermals, or HSI accuracy.
+
 ## Project-file reconciliation
 
-- **MVP Design Decisions:** updated to mark 12.5-cycle settling as failed with the current 330 Ω/1 nF network and record the 47 Ω recommendation.
+- **MVP Design Decisions:** reconciled to the implemented 47 Ω/1 nF network while retaining prototype validation gates.
 - **Design FMEA:** updated with the acquisition-settling failure and compensation-peaking risk.
 - **Board Bring-Up Plan:** updated with explicit acquisition, compensation, zero-floor, overload, power-transient, and pre-enumeration tests.
-- **Power Budget:** not changed; its 125/145/175 mA rounded architecture remains correct and was confirmed by the matrix.
+- **Power Budget:** reconciled to use LDO input current = output current + quiescent current, with direct-source loads added separately.
